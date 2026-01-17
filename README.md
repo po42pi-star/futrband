@@ -40,11 +40,11 @@
 ## 📁 Структура проекта
 ```bash
 futrband/
-├── index.html # Главная страница
-├── styles.css # Все стили
-├── README.md # Этот файл
-└── images/ # Папка с фотографиями и banner
-    ├── banner.png # Основной баннер
+├── index.html         # Главная страница
+├── styles.css         # Все стили
+├── README.md          # Этот файл
+└── images/            # Папка с фотографиями и banner
+    ├── banner.png     # Основной баннер
     ├── photo1.jpg
     ├── photo2.jpg
     └── ...
