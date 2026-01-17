@@ -125,11 +125,6 @@ h2 { color:#ffcc00; margin:0 0 12px; padding-left:10px; border-left:4px solid #f
   object-position: top;
 }
 
-/* Вертикальные фото ограничение */
-.slider.full-height img:where([src$=".jpg"], [src$=".jpeg"], [src$=".png"]) {
-  max-width: 50%;
-}
-
 .prev, .next {
   position: absolute;
   top:50%;
