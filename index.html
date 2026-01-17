@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Fire Up the Rockets — официальный сайт</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Навигация -->
+  <nav>
+    <div class="logo">Fire Up the Rockets</div>
+    <ul class="nav-links">
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#gallery">Фото</a></li>
+      <li><a href="#albums">Альбомы</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <button class="menu-toggle">&#9776;</button>
+  </nav>
+
+  <!-- Шапка -->
+  <header>
+    <video autoplay muted loop id="bg-video">
+      <source src="https://cdn.pixabay.com/vimeo/395692878/band-32474.mp4?width=1280&hash=53fa7bffbff19fa2b3a7cdb5b097bdc5bdbce5a0" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+    <div class="header-content">
+      <h1 class="animate-title">Fire Up the Rockets</h1>
+      <p class="animate-subtitle">Музыкальный коллектив — живые эмоции и современные ритмы</p>
+      <button id="listen-btn" class="animate-btn">Слушать сейчас</button>
+    </div>
+  </header>
+
+  <!-- Контент -->
+  <div class="content">
+
+    <!-- О нас -->
+    <section id="about" class="about fade-in">
+      <h2>О нас</h2>
+      <p>Fire Up the Rockets — это творческое объединение музыкантов, создающих оригинальные композиции с уникальным звучанием. Мы объединяем современные жанры и живую энергию, чтобы дарить слушателям настоящие музыкальные переживания.</p>
+    </section>
+
+    <!-- Галерея -->
+    <section id="gallery" class="gallery fade-in">
+      <h2>Фото</h2>
+      <div class="slider full-height">
+        <button class="prev">&#10094;</button>
+        <img src="images/photo1.jpg" alt="Fire Up the Rockets" id="slider-img">
+        <button class="next">&#10095;</button>
+      </div>
+      <p class="note"> </p>
+    </section>
+
+    <!-- Альбомы -->
+    <section id="albums" class="albums fade-in">
+      <h2>Наши альбомы</h2>
+      <div class="albums-container">
+        <iframe frameborder="0" src="https://music.yandex.ru/iframe/#album/24179284"></iframe>
+        <iframe frameborder="0" src="https://music.yandex.ru/iframe/#album/31842411"></iframe>
+        <iframe frameborder="0" src="https://music.yandex.ru/iframe/#album/39580752"></iframe>
+      </div>
+      <p class="note"> </p>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="contacts fade-in">
+      <h2>Контакты</h2>
+      <p>Менеджер: <strong><a href="https://vk.com/pobeijinov" target="_blank" class="contact-link">Побежимов Иван</a></strong></p>
+      </p>
+      <div class="social" style="margin-top:12px;">
+        <a href="https://vk.com/futrband" target="_blank">VK</a>
+        <a href="https://music.yandex.ru" target="_blank" class="separator">Yandex Music</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2025 Fire Up the Rockets. Все права защищены.
+  </footer>
+
+  <!-- Скрипты -->
+  <script>
+    // Fade-in при скролле
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Кнопка "Слушать сейчас"
+    document.getElementById('listen-btn').addEventListener('click', () => {
+      document.querySelector('#albums').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Галерея слайдер
+    const images = [
+      'images/photo1.jpg',
+      'images/photo2.jpg',
+      'images/photo3.jpg',
+      'images/photo4.jpg',
+      'images/photo5.jpg',
+      'images/photo6.jpg',
+      'images/photo7.jpg',
+      'images/photo8.jpg',
+      'images/photo9.jpg',
+      'images/photo10.jpg',
+      'images/photo11.jpg',
+      'images/photo12.jpg',
+      'images/photo13.jpg',
+      'images/photo14.jpg',
+      'images/photo15.jpg',
+      'images/photo16.jpg',
+      'images/photo17.jpg',
+      'images/photo18.jpg'
+    ];
+    let current = 0;
+    const sliderImg = document.getElementById('slider-img');
+    document.querySelector('.next').addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      sliderImg.src = images[current];
+    });
+    document.querySelector('.prev').addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      sliderImg.src = images[current];
+    });
+
+    // Анимация меню
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
